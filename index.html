@@ -68,32 +68,66 @@
     <section id="perjalanan">
       <h2>Perjalanan</h2>
       <p class="intro">Beberapa perjalanan yang menjadi bagian dari cerita saya.</p>
+      <p class="ringkas">8 gunung · 3 tempat touring</p>
+
       <div class="filter" id="filter">
         <button class="on" data-f="semua">Semua</button>
         <button data-f="touring">Touring</button>
         <button data-f="pendakian">Pendakian</button>
       </div>
+
+      <!-- FOTO UNGGULAN -->
+      <article class="trip unggulan" data-k="pendakian" data-judul="Gunung Sumbing" data-foto="sumbing.jpg">
+        <div class="cover"><img src="foto/sumbing.jpg" alt="Gunung Sumbing" onerror="this.remove()"></div>
+        <div class="info"><h3>Gunung Sumbing</h3><p>Pendakian</p></div>
+      </article>
+
+      <!-- KARTU PER GUNUNG / TEMPAT -->
       <div class="masonry">
-        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/sumbing.jpg" alt="Gunung Sumbing" onerror="this.remove()"><figcaption><b>Gunung Sumbing</b></figcaption></figure>
-        <figure class="foto t2" data-k="touring"><img loading="lazy" src="foto/dieng.jpg" alt="Dieng" onerror="this.remove()"><figcaption><b>Dieng</b></figcaption></figure>
-        <figure class="foto t2" data-k="touring"><img loading="lazy" src="foto/telagamenjer.jpg" alt="Telaga Menjer" onerror="this.remove()"><figcaption><b>Telaga Menjer</b></figcaption></figure>
-        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/slamet.jpg" alt="Gunung Slamet" onerror="this.remove()"><figcaption><b>Gunung Slamet</b></figcaption></figure>
-        <figure class="foto t1" data-k="touring"><img loading="lazy" src="foto/telemoyo.jpg" alt="Telomoyo" onerror="this.remove()"><figcaption><b>Telomoyo</b></figcaption></figure>
-        <figure class="foto t2" data-k="pendakian"><img loading="lazy" src="foto/prau1.jpg" alt="Gunung Prau" onerror="this.remove()"><figcaption><b>Gunung Prau</b></figcaption></figure>
-        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/prau2.jpg" alt="Gunung Prau" onerror="this.remove()"><figcaption><b>Gunung Prau</b></figcaption></figure>
-        <figure class="foto t2" data-k="pendakian"><img loading="lazy" src="foto/kembang1.jpg" alt="Gunung Kembang" onerror="this.remove()"><figcaption><b>Gunung Kembang</b></figcaption></figure>
-        <figure class="foto t1" data-k="touring"><img loading="lazy" src="foto/telagamenjer2.jpg" alt="Telaga Menjer" onerror="this.remove()"><figcaption><b>Telaga Menjer</b></figcaption></figure>
-        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/lawu1.jpg" alt="Gunung Lawu" onerror="this.remove()"><figcaption><b>Gunung Lawu</b></figcaption></figure>
-        <figure class="foto t2" data-k="pendakian"><img loading="lazy" src="foto/lawu2.jpg" alt="Gunung Lawu" onerror="this.remove()"><figcaption><b>Gunung Lawu</b></figcaption></figure>
-        <figure class="foto t1" data-k="pendakian"><img loading="lazy" src="foto/merbabu1.jpg" alt="Gunung Merbabu" onerror="this.remove()"><figcaption><b>Gunung Merbabu</b></figcaption></figure>
-        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/merbabu2.jpg" alt="Gunung Merbabu" onerror="this.remove()"><figcaption><b>Gunung Merbabu</b></figcaption></figure>
-        <figure class="foto t2" data-k="pendakian"><img loading="lazy" src="foto/muria1.jpg" alt="Gunung Muria" onerror="this.remove()"><figcaption><b>Gunung Muria</b></figcaption></figure>
-        <figure class="foto t1" data-k="pendakian"><img loading="lazy" src="foto/muria2.jpg" alt="Gunung Muria" onerror="this.remove()"><figcaption><b>Gunung Muria</b></figcaption></figure>
-        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/muria3.jpg" alt="Gunung Muria" onerror="this.remove()"><figcaption><b>Gunung Muria</b></figcaption></figure>
-        <figure class="foto t2" data-k="pendakian"><img loading="lazy" src="foto/muria4.jpg" alt="Gunung Muria" onerror="this.remove()"><figcaption><b>Gunung Muria</b></figcaption></figure>
-        <figure class="foto t2" data-k="pendakian"><img loading="lazy" src="foto/ungaran.jpg" alt="Gunung Ungaran" onerror="this.remove()"><figcaption><b>Gunung Ungaran</b></figcaption></figure>
-        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/ungaran2.jpg" alt="Gunung Ungaran" onerror="this.remove()"><figcaption><b>Gunung Ungaran</b></figcaption></figure>
+        <article class="trip" data-k="pendakian" data-judul="Gunung Lawu" data-foto="lawu1.jpg,lawu2.jpg">
+          <div class="cover"><img loading="lazy" src="foto/lawu1.jpg" alt="Gunung Lawu" onerror="this.remove()"><span class="jumlah">2 foto</span></div>
+          <div class="info"><h3>Gunung Lawu</h3><p>Pendakian · 3.265 mdpl</p></div>
+        </article>
+        <article class="trip" data-k="pendakian" data-judul="Gunung Merbabu" data-foto="merbabu1.jpg,merbabu2.jpg">
+          <div class="cover"><img loading="lazy" src="foto/merbabu2.jpg" alt="Gunung Merbabu" onerror="this.remove()"><span class="jumlah">2 foto</span></div>
+          <div class="info"><h3>Gunung Merbabu</h3><p>Pendakian</p></div>
+        </article>
+        <article class="trip" data-k="pendakian" data-judul="Gunung Muria" data-foto="muria1.jpg,muria2.jpg,muria3.jpg,muria4.jpg">
+          <div class="cover"><img loading="lazy" src="foto/muria1.jpg" alt="Gunung Muria" onerror="this.remove()"><span class="jumlah">4 foto</span></div>
+          <div class="info"><h3>Gunung Muria</h3><p>Pendakian</p></div>
+        </article>
+        <article class="trip" data-k="pendakian" data-judul="Gunung Prau" data-foto="prau1.jpg,prau2.jpg">
+          <div class="cover"><img loading="lazy" src="foto/prau1.jpg" alt="Gunung Prau" onerror="this.remove()"><span class="jumlah">2 foto</span></div>
+          <div class="info"><h3>Gunung Prau</h3><p>Pendakian · 2.590 mdpl</p></div>
+        </article>
+        <article class="trip" data-k="touring" data-judul="Telaga Menjer" data-foto="telagamenjer.jpg,telagamenjer2.jpg">
+          <div class="cover"><img loading="lazy" src="foto/telagamenjer.jpg" alt="Telaga Menjer" onerror="this.remove()"><span class="jumlah">2 foto</span></div>
+          <div class="info"><h3>Telaga Menjer</h3><p>Touring</p></div>
+        </article>
+        <article class="trip" data-k="touring" data-judul="Dieng" data-foto="dieng.jpg">
+          <div class="cover"><img loading="lazy" src="foto/dieng.jpg" alt="Dieng" onerror="this.remove()"></div>
+          <div class="info"><h3>Dieng</h3><p>Touring</p></div>
+        </article>
+        <article class="trip" data-k="pendakian" data-judul="Gunung Slamet" data-foto="slamet.jpg">
+          <div class="cover"><img loading="lazy" src="foto/slamet.jpg" alt="Gunung Slamet" onerror="this.remove()"></div>
+          <div class="info"><h3>Gunung Slamet</h3><p>Pendakian</p></div>
+        </article>
+        <article class="trip" data-k="pendakian" data-judul="Gunung Ungaran" data-foto="ungaran.jpg,ungaran2.jpg">
+          <div class="cover"><img loading="lazy" src="foto/ungaran.jpg" alt="Gunung Ungaran" onerror="this.remove()"><span class="jumlah">2 foto</span></div>
+          <div class="info"><h3>Gunung Ungaran</h3><p>Pendakian · 2.050 mdpl</p></div>
+        </article>
+        <article class="trip" data-k="pendakian" data-judul="Gunung Kembang" data-foto="kembang1.jpg">
+          <div class="cover"><img loading="lazy" src="foto/kembang1.jpg" alt="Gunung Kembang" onerror="this.remove()"></div>
+          <div class="info"><h3>Gunung Kembang</h3><p>Pendakian</p></div>
+        </article>
+        <article class="trip" data-k="touring" data-judul="Telomoyo" data-foto="telemoyo.jpg">
+          <div class="cover"><img loading="lazy" src="foto/telemoyo.jpg" alt="Telomoyo" onerror="this.remove()"></div>
+          <div class="info"><h3>Telomoyo</h3><p>Touring</p></div>
+        </article>
       </div>
+
+      <button class="semua-btn" id="semua" type="button">Lihat semua ↓</button>
+
       <p class="catatan-akhir">Ada beberapa gunung yang selalu ingin saya datangi lagi, bukan karena belum puas, tetapi karena setiap perjalanan meninggalkan cerita yang berbeda.</p>
     </section>
 
