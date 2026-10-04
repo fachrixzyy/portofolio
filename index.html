@@ -20,8 +20,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>
+    /* jalan paling awal: tema tanpa kedip, penanda "js", dan pengaman loader */
+    (function () {
+      var d = document.documentElement;
+      d.classList.add("js");
+      var t = "dark";
+      try { if (localStorage.getItem("tema") === "terang") t = "light"; } catch (e) {}
+      d.dataset.theme = t;
+      var lihat = false;
+      try { lihat = !!sessionStorage.getItem("loader"); } catch (e) {}
+      if (!lihat) d.classList.add("muat");
+      setTimeout(function () { d.classList.remove("muat"); d.classList.add("siap"); }, 4000);
+    })();
+  </script>
 </head>
 <body>
+  <div id="loader" class="loader" aria-hidden="true"><div class="putar"></div><p>fachrixzyy</p></div>
   <div id="progres"></div>
 
   <nav class="navbar">
@@ -82,7 +97,7 @@
       <p class="intro">Project yang saya kerjakan sebagai bagian dari proses belajar dan pengembangan kemampuan.</p>
       <div class="grid">
         <article class="proyek">
-          <div class="thumb"><span>Foto project</span><img src="foto/mikrotik.jpg" alt="MikroTik Parent Panel" onerror="this.remove()"><em class="nomor">#01</em></div>
+          <div class="thumb"><span class="segera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg>Photo Coming Soon</span><img src="foto/mikrotik.jpg" alt="MikroTik Parent Panel" onerror="this.remove()"><em class="nomor">#01</em></div>
           <div class="isi">
             <h3>MikroTik Parent Panel</h3>
             <p class="jenis">Networking</p>
@@ -282,7 +297,7 @@
     <button class="tutup" aria-label="Tutup">✕</button>
     <h3>MikroTik Parent Panel</h3>
     <p class="jenis">Panel Kontrol Internet Anak Berbasis Web &amp; MikroTik</p>
-    <div class="thumb besar"><span>Foto project</span><img src="foto/mikrotik.jpg" alt="" onerror="this.remove()"></div>
+    <div class="thumb besar"><span class="segera"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/></svg>Photo Coming Soon</span><img src="foto/mikrotik.jpg" alt="" onerror="this.remove()"></div>
     <dl>
       <dt>Tentang project</dt>
       <dd>Dibuat untuk menyederhanakan pengelolaan akses internet yang biasanya dilakukan lewat konfigurasi MikroTik secara langsung. Panel berfungsi sebagai pengendali konfigurasi, sementara trafik internet tetap melewati MikroTik.</dd>
