@@ -25,74 +25,114 @@ menu.querySelectorAll("a").forEach(a => {
   a.addEventListener("click", () => menu.classList.remove("buka"));
 });
 
-// 3. Galeri perjalanan: filter + tombol "Lihat semua"
-const BATAS = 6; // jumlah kartu yang tampil sebelum "Lihat semua"
+// 3. Journey: filter, nomor cerita, dan tombol "Perjalanan lainnya"
 const tombolFilter = document.querySelectorAll("#filter button");
-const unggulan = document.querySelector(".trip.unggulan");
+const cerita = [...document.querySelectorAll(".cerita")];
 const kartuBiasa = [...document.querySelectorAll(".masonry .trip")];
 const tombolSemua = document.getElementById("semua");
+const lainnya = document.getElementById("lainnya");
 let kategori = "semua";
 let terbuka = false;
+const cocok = k => kategori === "semua" || k.dataset.k === kategori;
+const dua = n => String(n).padStart(2, "0");
 
 function tataGaleri() {
-  const cocok = k => kategori === "semua" || k.dataset.k === kategori;
-  unggulan.classList.toggle("sembunyi", !cocok(unggulan));
-
-  let hitung = 0;
-  kartuBiasa.forEach(k => {
-    let tampil = false;
-    if (cocok(k)) {
-      hitung++;
-      tampil = terbuka || hitung <= BATAS;
-    }
-    k.classList.toggle("sembunyi", !tampil);
+  const tampil = cerita.filter(cocok);
+  cerita.forEach(c => { c.hidden = !cocok(c); });
+  tampil.forEach((c, i) => {
+    c.querySelector(".no-cerita").textContent = dua(i + 1) + " / " + dua(tampil.length);
   });
-
+  kartuBiasa.forEach(k => k.classList.toggle("sembunyi", !cocok(k)));
   const total = kartuBiasa.filter(cocok).length;
-  tombolSemua.hidden = terbuka || total <= BATAS;
-  tombolSemua.textContent = "Lihat semua (" + total + ") ↓";
+  tombolSemua.hidden = total === 0;
+  lainnya.hidden = total === 0 || !terbuka;
+  tombolSemua.textContent = terbuka ? "Sembunyikan ↑" : "Perjalanan lainnya (" + total + ") ↓";
 }
-
 tombolFilter.forEach(tombol => {
   tombol.addEventListener("click", () => {
     kategori = tombol.dataset.f;
-    terbuka = false;
     tombolFilter.forEach(t => t.classList.toggle("on", t === tombol));
     tataGaleri();
   });
 });
 tombolSemua.addEventListener("click", () => {
-  terbuka = true;
+  terbuka = !terbuka;
   tataGaleri();
 });
 tataGaleri();
 
-// 4. Lightbox: tap kartu, geser semua foto gunung itu
+// foto tegak (portrait) tampil sesuai bentuk aslinya
+document.querySelectorAll(".foto-besar img").forEach(im => {
+  const cek = () => {
+    if (im.naturalHeight > im.naturalWidth * 1.05) im.closest(".foto-besar").classList.add("tegak");
+  };
+  if (im.complete) cek(); else im.addEventListener("load", cek);
+});
+
+// 4. Lightbox: tap kartu atau foto di slider, geser semua foto
 const lb = document.getElementById("lb");
 const lbImg = document.getElementById("lb-img");
 const lbCap = document.getElementById("lb-cap");
+const lbHitung = document.getElementById("lb-hitung");
+const lbThumbs = document.getElementById("lb-thumbs");
 const lbPrev = document.querySelector(".lb-prev");
 const lbNext = document.querySelector(".lb-next");
 let foto = [];
 let judul = "";
 let meta = "";
 let posisi = 0;
+let kembali = null;          // dialog yang dibuka ulang saat lightbox ditutup
+const slider = new Map();    // dialog -> kontrol slidernya
+
+// kunci scroll halaman saat dialog / lightbox terbuka
+function kunci(ya) { root.classList.toggle("kunci", ya); }
 
 function tampilkan() {
+  lbImg.style.opacity = 0;
+  lbImg.onload = lbImg.onerror = () => { lbImg.style.opacity = 1; };
   lbImg.src = "foto/" + foto[posisi];
-  const nomor = foto.length > 1 ? " · " + (posisi + 1) + " / " + foto.length : "";
-  lbCap.innerHTML = "<b>" + judul + "</b>" + meta + nomor;
-  lbPrev.hidden = lbNext.hidden = foto.length < 2;
+  lbCap.innerHTML = "<b>" + judul + "</b>" + meta;
+  const banyak = foto.length > 1;
+  lbHitung.hidden = lbThumbs.hidden = lbPrev.hidden = lbNext.hidden = !banyak;
+  lbHitung.textContent = (posisi + 1) + " / " + foto.length;
+  [...lbThumbs.children].forEach((b, i) => b.classList.toggle("on", i === posisi));
 }
-function buka(kartu) {
-  foto = kartu.dataset.foto.split(",");
-  judul = kartu.dataset.judul;
-  meta = kartu.querySelector(".info p").textContent;
-  posisi = 0;
+function bangunThumbs() {
+  lbThumbs.innerHTML = "";
+  foto.forEach((f, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.setAttribute("aria-label", "Foto " + (i + 1));
+    const im = document.createElement("img");
+    im.src = "foto/" + f;
+    im.alt = "";
+    b.appendChild(im);
+    b.addEventListener("click", e => { e.stopPropagation(); posisi = i; tampilkan(); });
+    lbThumbs.appendChild(b);
+  });
+}
+function bukaFoto(daftar, idx, jdl, mt) {
+  foto = daftar; judul = jdl; meta = mt; posisi = idx;
+  bangunThumbs();
   tampilkan();
   lb.hidden = false;
+  kunci(true);
 }
-function tutup() { lb.hidden = true; }
+function buka(kartu) {
+  bukaFoto(kartu.dataset.foto.split(","), 0, kartu.dataset.judul, kartu.dataset.meta || kartu.querySelector(".info p").textContent);
+}
+function tutup() {
+  lb.hidden = true;
+  if (kembali) {
+    const d = kembali;
+    kembali = null;
+    d.showModal();
+    const sl = slider.get(d);
+    if (sl) sl.pergi(posisi);
+  } else {
+    kunci(false);
+  }
+}
 function geser(arah) {
   if (foto.length < 2) return;
   posisi = (posisi + arah + foto.length) % foto.length;
@@ -102,6 +142,11 @@ function geser(arah) {
 document.querySelectorAll(".trip").forEach(kartu => {
   kartu.addEventListener("click", () => {
     if (kartu.querySelector("img")) buka(kartu);
+  });
+});
+cerita.forEach(c => {
+  c.querySelectorAll(".foto-besar, .lihat-foto").forEach(el => {
+    el.addEventListener("click", () => { if (c.querySelector("img")) buka(c); });
   });
 });
 document.querySelector(".lb-tutup").addEventListener("click", tutup);
@@ -116,23 +161,71 @@ document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") geser(1);
 });
 
-// geser jari di HP
-let awalX = 0;
-lb.addEventListener("touchstart", e => { awalX = e.touches[0].clientX; }, { passive: true });
+// geser jari di HP (deretan thumbnail tidak ikut memicu)
+let awalX = null;
+lb.addEventListener("touchstart", e => {
+  awalX = e.target.closest(".lb-thumbs") ? null : e.touches[0].clientX;
+}, { passive: true });
 lb.addEventListener("touchend", e => {
+  if (awalX === null) return;
   const selisih = e.changedTouches[0].clientX - awalX;
   if (Math.abs(selisih) > 50) geser(selisih > 0 ? -1 : 1);
 });
 
-// 5. Detail project (dialog)
+// 5. Detail project (dialog) + slider foto
+document.querySelectorAll(".slider").forEach(el => {
+  const jalur = el.querySelector(".jalur");
+  const hitung = el.querySelector(".hitung");
+  const titik = el.querySelector(".titik");
+  const tombol = el.querySelectorAll(".s-nav");
+  const gambar = () => [...jalur.querySelectorAll("img")];
+
+  function perbarui() {
+    const n = gambar().length;
+    const i = Math.min(Math.round(jalur.scrollLeft / (jalur.clientWidth || 1)), Math.max(n - 1, 0));
+    el.hidden = n === 0;
+    hitung.hidden = titik.hidden = n < 2;
+    tombol.forEach(b => { b.hidden = n < 2; });
+    hitung.textContent = (i + 1) + " / " + n;
+    if (titik.children.length !== n) titik.innerHTML = "<i></i>".repeat(n);
+    [...titik.children].forEach((t, k) => t.classList.toggle("on", k === i));
+  }
+  function pergi(i) {
+    jalur.scrollTo({ left: i * jalur.clientWidth, behavior: "auto" });
+    perbarui();
+  }
+
+  jalur.addEventListener("scroll", perbarui, { passive: true });
+  el.querySelector(".s-prev").addEventListener("click", () => jalur.scrollBy({ left: -jalur.clientWidth, behavior: "smooth" }));
+  el.querySelector(".s-next").addEventListener("click", () => jalur.scrollBy({ left: jalur.clientWidth, behavior: "smooth" }));
+  gambar().forEach(im => im.addEventListener("error", () => setTimeout(perbarui)));
+
+  jalur.addEventListener("click", e => {
+    const im = e.target.closest("img");
+    if (!im) return;
+    const daftar = gambar();
+    const d = el.closest("dialog");
+    kembali = d;
+    d.close();
+    bukaFoto(daftar.map(x => x.getAttribute("src").replace("foto/", "")), daftar.indexOf(im), d.querySelector("h3").textContent, "");
+  });
+
+  slider.set(el.closest("dialog"), { perbarui, pergi });
+});
+
 document.querySelectorAll(".lihat").forEach(tombol => {
   tombol.addEventListener("click", () => {
-    document.getElementById(tombol.dataset.dialog).showModal();
+    const d = document.getElementById(tombol.dataset.dialog);
+    d.showModal();
+    kunci(true);
+    const sl = slider.get(d);
+    if (sl) sl.perbarui();
   });
 });
 document.querySelectorAll("dialog.detail").forEach(d => {
   d.querySelector(".tutup").addEventListener("click", () => d.close());
   d.addEventListener("click", e => { if (e.target === d) d.close(); });
+  d.addEventListener("close", () => { if (lb.hidden) kunci(false); });
 });
 
 // 6. Garis progres, tombol atas, dan menu aktif saat scroll
