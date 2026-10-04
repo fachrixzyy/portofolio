@@ -6,8 +6,8 @@ function aturTema(gelap) {
   root.dataset.theme = gelap ? "dark" : "light";
   tombolTema.textContent = gelap ? "☀️" : "🌙";
 }
-let gelap = false;
-try { gelap = localStorage.getItem("tema") === "gelap"; } catch (e) {}
+let gelap = true; // dark jadi default
+try { gelap = localStorage.getItem("tema") !== "terang"; } catch (e) {}
 aturTema(gelap);
 
 tombolTema.addEventListener("click", () => {
