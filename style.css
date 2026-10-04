@@ -287,6 +287,12 @@ section p + p { margin-top: 12px; }
 .baris h3 { font-size: 0.95rem; font-weight: 600; }
 .baris .tag { margin-top: 0; }
 
+.belajar { margin-top: 34px; padding-top: 28px; border-top: 1px solid var(--garis); }
+.belajar h3 { font-size: 1.05rem; }
+.belajar p { margin-top: 4px; color: var(--redup); font-size: 0.92rem; }
+.belajar .tag { margin-top: 14px; }
+.belajar .tag span { color: var(--teks); border-color: var(--aksen); }
+
 /* ===== KONTAK, PENUTUP, FOOTER ===== */
 .kontak-baris { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .penutup { max-width: 600px; margin: 0 auto; padding: 56px 20px; text-align: center; border-top: 1px solid var(--garis); }
