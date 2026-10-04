@@ -272,6 +272,11 @@ section p + p { margin-top: 12px; }
   background: linear-gradient(135deg, var(--glow), var(--garis));
   color: var(--aksen); font: 600 0.9rem Poppins, sans-serif;
 }
+.segera {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--aksen); opacity: 0.8; font: 500 0.85rem Poppins, sans-serif; letter-spacing: 0.04em;
+}
+.segera svg { width: 26px; height: 26px; }
 .thumb.besar { aspect-ratio: auto; height: 190px; border-radius: 12px; overflow: hidden; margin: 14px 0; }
 .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
 .isi { padding: 20px; display: flex; flex-direction: column; flex: 1; }
@@ -378,9 +383,55 @@ footer .kecil { max-width: 420px; margin: 6px auto 0; font-size: 0.8rem; line-he
 }
 #atas.tampil { opacity: 1; pointer-events: auto; }
 
-/* ===== ANIMASI MUNCUL SAAT SCROLL ===== */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s; }
-.reveal.show { opacity: 1; transform: none; }
+/* ===== LOADER ===== */
+.loader {
+  position: fixed; inset: 0; z-index: 100; display: none;
+  flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+  background: var(--bg); transition: opacity 0.3s ease;
+}
+.muat .loader { display: flex; }
+.loader.selesai { opacity: 0; pointer-events: none; }
+.putar {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 2px solid var(--garis); border-top-color: var(--aksen);
+  animation: putar 0.9s linear infinite;
+}
+.loader p { font: 600 0.95rem Poppins, sans-serif; letter-spacing: 0.02em; color: var(--redup); }
+html.muat, html.muat body { overflow: hidden; }
+@keyframes putar { to { transform: rotate(360deg); } }
+
+/* ===== ANIMASI MASUK ===== */
+/* hero: muncul bertahap setelah loader selesai */
+.js .hero-teks > *, .js .potret { opacity: 0; }
+.siap .hero-teks > *, .siap .potret { animation: naik 0.8s ease both; animation-delay: var(--d, 0s); }
+.hero-teks > :nth-child(1) { --d: 0s; }
+.hero-teks > :nth-child(2) { --d: 0.12s; }
+.hero-teks > :nth-child(3) { --d: 0.24s; }
+.hero-teks > :nth-child(4) { --d: 0.4s; }
+.hero-teks > :nth-child(5) { --d: 0.52s; }
+.hero-teks > :nth-child(6) { --d: 0.68s; }
+.potret { --d: 0.85s; }
+@keyframes naik { from { opacity: 0; translate: 0 16px; } to { opacity: 1; translate: none; } }
+
+/* konten: muncul saat di-scroll, bergantian */
+.reveal { opacity: 0; translate: 0 20px; transition: opacity 0.7s ease, translate 0.7s ease; transition-delay: var(--d, 0s); }
+.reveal.show { opacity: 1; translate: none; }
+
+/* foto: muncul pelan setelah selesai dimuat */
+img { transition: opacity 0.5s ease; }
+img.memuat { opacity: 0; }
+
+/* dialog dan layar penuh: fade */
+.detail[open] { animation: dialogMasuk 0.28s ease; }
+.detail[open]::backdrop { animation: pudarMasuk 0.28s ease; }
+.detail.keluar { animation: dialogKeluar 0.2s ease forwards; }
+.detail.keluar::backdrop { animation: pudarKeluar 0.2s ease forwards; }
+.lb:not([hidden]) { animation: pudarMasuk 0.25s ease; }
+.lb.keluar { animation: pudarKeluar 0.2s ease forwards; }
+@keyframes dialogMasuk { from { opacity: 0; translate: 0 14px; } }
+@keyframes dialogKeluar { to { opacity: 0; translate: 0 10px; } }
+@keyframes pudarMasuk { from { opacity: 0; } }
+@keyframes pudarKeluar { to { opacity: 0; } }
 
 /* ===== LAYAR LEBAR ===== */
 @media (min-width: 768px) {
@@ -398,5 +449,7 @@ footer .kecil { max-width: 420px; margin: 6px auto 0; font-size: 0.8rem; line-he
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; animation: none !important; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal { opacity: 1; translate: none; }
+  .js .hero-teks > *, .js .potret { opacity: 1; }
+  img.memuat { opacity: 1; }
 }
