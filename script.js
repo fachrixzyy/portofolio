@@ -25,54 +25,88 @@ menu.querySelectorAll("a").forEach(a => {
   a.addEventListener("click", () => menu.classList.remove("buka"));
 });
 
-// 3. Filter galeri (Semua / Touring / Pendakian)
+// 3. Galeri perjalanan: filter + tombol "Lihat semua"
+const BATAS = 6; // jumlah kartu yang tampil sebelum "Lihat semua"
 const tombolFilter = document.querySelectorAll("#filter button");
-const semuaFoto = document.querySelectorAll(".foto");
+const unggulan = document.querySelector(".trip.unggulan");
+const kartuBiasa = [...document.querySelectorAll(".masonry .trip")];
+const tombolSemua = document.getElementById("semua");
+let kategori = "semua";
+let terbuka = false;
+
+function tataGaleri() {
+  const cocok = k => kategori === "semua" || k.dataset.k === kategori;
+  unggulan.classList.toggle("sembunyi", !cocok(unggulan));
+
+  let hitung = 0;
+  kartuBiasa.forEach(k => {
+    let tampil = false;
+    if (cocok(k)) {
+      hitung++;
+      tampil = terbuka || hitung <= BATAS;
+    }
+    k.classList.toggle("sembunyi", !tampil);
+  });
+
+  const total = kartuBiasa.filter(cocok).length;
+  tombolSemua.hidden = terbuka || total <= BATAS;
+  tombolSemua.textContent = "Lihat semua (" + total + ") ↓";
+}
 
 tombolFilter.forEach(tombol => {
   tombol.addEventListener("click", () => {
-    const pilihan = tombol.dataset.f;
+    kategori = tombol.dataset.f;
+    terbuka = false;
     tombolFilter.forEach(t => t.classList.toggle("on", t === tombol));
-    semuaFoto.forEach(foto => {
-      const cocok = pilihan === "semua" || foto.dataset.k === pilihan;
-      foto.classList.toggle("sembunyi", !cocok);
-    });
+    tataGaleri();
   });
 });
+tombolSemua.addEventListener("click", () => {
+  terbuka = true;
+  tataGaleri();
+});
+tataGaleri();
 
-// 4. Lightbox: foto layar penuh + caption + sebelumnya/berikutnya
+// 4. Lightbox: tap kartu, geser semua foto gunung itu
 const lb = document.getElementById("lb");
 const lbImg = document.getElementById("lb-img");
 const lbCap = document.getElementById("lb-cap");
-let daftar = [];
+const lbPrev = document.querySelector(".lb-prev");
+const lbNext = document.querySelector(".lb-next");
+let foto = [];
+let judul = "";
+let meta = "";
 let posisi = 0;
 
 function tampilkan() {
-  const foto = daftar[posisi];
-  lbImg.src = foto.querySelector("img").src;
-  lbCap.innerHTML = foto.querySelector("figcaption").innerHTML;
+  lbImg.src = "foto/" + foto[posisi];
+  const nomor = foto.length > 1 ? " · " + (posisi + 1) + " / " + foto.length : "";
+  lbCap.innerHTML = "<b>" + judul + "</b>" + meta + nomor;
+  lbPrev.hidden = lbNext.hidden = foto.length < 2;
 }
-function buka(foto) {
-  // hanya foto yang terlihat (sesuai filter) dan gambarnya ada
-  daftar = [...document.querySelectorAll(".foto:not(.sembunyi)")].filter(f => f.querySelector("img"));
-  posisi = daftar.indexOf(foto);
+function buka(kartu) {
+  foto = kartu.dataset.foto.split(",");
+  judul = kartu.dataset.judul;
+  meta = kartu.querySelector(".info p").textContent;
+  posisi = 0;
   tampilkan();
   lb.hidden = false;
 }
 function tutup() { lb.hidden = true; }
 function geser(arah) {
-  posisi = (posisi + arah + daftar.length) % daftar.length;
+  if (foto.length < 2) return;
+  posisi = (posisi + arah + foto.length) % foto.length;
   tampilkan();
 }
 
-semuaFoto.forEach(foto => {
-  foto.addEventListener("click", () => {
-    if (foto.querySelector("img")) buka(foto);
+document.querySelectorAll(".trip").forEach(kartu => {
+  kartu.addEventListener("click", () => {
+    if (kartu.querySelector("img")) buka(kartu);
   });
 });
 document.querySelector(".lb-tutup").addEventListener("click", tutup);
-document.querySelector(".lb-prev").addEventListener("click", () => geser(-1));
-document.querySelector(".lb-next").addEventListener("click", () => geser(1));
+lbPrev.addEventListener("click", () => geser(-1));
+lbNext.addEventListener("click", () => geser(1));
 lb.addEventListener("click", e => { if (e.target === lb) tutup(); });
 
 document.addEventListener("keydown", e => {
