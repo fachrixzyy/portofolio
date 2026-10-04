@@ -2,143 +2,208 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fachri | Software, Hardware & Pendakian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Portofolio Ahmad Fachri Habibur Rohman: jaringan, web, dan perjalanan.">
+  <meta name="theme-color" content="#173b70">
+  <title>Ahmad Fachri | Network & Technology Enthusiast</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23173b70%22/><text x=%2250%22 y=%2270%22 font-size=%2262%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Arial%22 font-weight=%22bold%22>F</text></svg>">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ahmad Fachri | Network & Technology Enthusiast">
+  <meta property="og:description" content="Belajar dari setiap proses, tumbuh dari setiap perjalanan.">
+  <meta property="og:image" content="https://fachrixzyy.github.io/portofolio/foto/sumbing.jpg">
+  <meta property="og:url" content="https://fachrixzyy.github.io/portofolio/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="progres"></div>
 
   <nav class="navbar">
     <a href="#home" class="logo">Fachri<span>.</span></a>
     <ul class="menu" id="menu">
       <li><a href="#tentang">Tentang</a></li>
-      <li><a href="#healing">Healing</a></li>
-      <li><a href="#pendakian">Pendakian</a></li>
-      <li><a href="#proyek">Proyek</a></li>
+      <li><a href="#perjalanan">Perjalanan</a></li>
+      <li><a href="#pendidikan">Pendidikan</a></li>
+      <li><a href="#project">Project</a></li>
       <li><a href="#skill">Skill</a></li>
       <li><a href="#kontak">Kontak</a></li>
     </ul>
     <div class="aksi">
-      <button id="tema" aria-label="Ganti tema">☀️</button>
+      <button id="tema" aria-label="Ganti tema">🌙</button>
       <button id="burger" aria-label="Menu">☰</button>
     </div>
   </nav>
 
   <header class="hero" id="home">
-    <p class="sapaan">Halo, saya</p>
-    <h1>Ahmad Fachri Habibur Rohman</h1>
-    <p class="peran">Merakit, membuat, lalu mendaki. Semuanya untuk memahami cara sesuatu bekerja.</p>
-    <div class="tombol">
-      <a href="#proyek" class="btn utama">Lihat Proyek</a>
-      <a href="#kontak" class="btn">Hubungi Saya</a>
+    <div class="profil">
+      <span>F</span>
+      <img src="foto/profil.jpg" alt="Foto Fachri" onerror="this.remove()">
+    </div>
+    <div class="hero-teks">
+      <h1>Ahmad Fachri Habibur Rohman</h1>
+      <p class="peran">Network &amp; Technology Enthusiast</p>
+      <p class="tagline">“Belajar dari setiap proses, tumbuh dari setiap perjalanan.”</p>
+      <div class="tombol">
+        <a href="#project" class="btn utama">Lihat Project</a>
+        <a href="#tentang" class="btn">Tentang Saya</a>
+      </div>
+      <div class="fokus"><span>TJKT</span><span>MikroTik</span><span>Web Development</span><span>Touring</span></div>
     </div>
   </header>
-
-  <div class="statistik">
-    <div><strong>7</strong><span>Gunung didaki</span></div>
-    <div><strong>3</strong><span>Proyek dibuat</span></div>
-    <div><strong>2</strong><span>Tahun ngoprek</span></div>
-  </div>
 
   <main>
     <section id="tentang">
       <h2>Tentang Saya</h2>
-      <p>Saya Fachri. Di depan layar, saya belajar membangun website dan mengoprek hardware sampai benar-benar paham cara kerjanya. Di luar layar, saya naik gunung dan mencari tempat sunyi untuk menjernihkan kepala.</p>
-      <p>Dua dunia ini saling melengkapi. Gunung mengajari saya sabar dan disiplin, ngoprek mengajari saya teliti dan tidak mudah menyerah. Website ini pun saya buat sendiri, langsung dari HP.</p>
+      <p>Saya siswa SMK Salafiyah Kajen jurusan Teknik Jaringan Komputer dan Telekomunikasi (TJKT) yang tertarik pada jaringan, hardware, dan pengembangan web.</p>
+      <p>Saya senang belajar dengan mencoba langsung, membuat project, dan mencari solusi dari masalah yang saya temui.</p>
+      <p>Di luar teknologi, saya menikmati touring dan pendakian. Bagi saya, perjalanan bukan hanya tentang tempat yang dikunjungi, tetapi juga tentang proses, pengalaman, dan cerita yang dibawa pulang.</p>
     </section>
 
-    <section id="healing">
-      <h2>Healing</h2>
-      <p>Bagi saya, healing bukan soal tempat jauh atau mahal. Healing adalah berhenti sejenak, menarik napas, dan pulang dengan kepala yang lebih ringan.</p>
-      <div class="galeri">
-        <img src="foto/healing1.jpg" alt="Deskripsi foto pertama">
-        <img src="foto/healing2.jpg" alt="Deskripsi foto kedua">
-        <img src="foto/healing3.jpg" alt="Deskripsi foto ketiga">
+    <section id="perjalanan">
+      <h2>Perjalanan</h2>
+      <p class="intro">Beberapa perjalanan yang menjadi bagian dari cerita saya.</p>
+      <div class="filter" id="filter">
+        <button class="on" data-f="semua">Semua</button>
+        <button data-f="touring">Touring</button>
+        <button data-f="pendakian">Pendakian</button>
       </div>
+      <div class="masonry">
+        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/sumbing.jpg" alt="Gunung Sumbing" onerror="this.remove()"><figcaption><b>Gunung Sumbing</b></figcaption></figure>
+        <figure class="foto t2" data-k="touring"><img loading="lazy" src="foto/dieng.jpg" alt="Dieng" onerror="this.remove()"><figcaption><b>Dieng</b></figcaption></figure>
+        <figure class="foto t2" data-k="touring"><img loading="lazy" src="foto/telagamenjer.jpg" alt="Telaga Menjer" onerror="this.remove()"><figcaption><b>Telaga Menjer</b></figcaption></figure>
+        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/slamet.jpg" alt="Gunung Slamet" onerror="this.remove()"><figcaption><b>Gunung Slamet</b></figcaption></figure>
+        <figure class="foto t1" data-k="touring"><img loading="lazy" src="foto/telemoyo.jpg" alt="Telomoyo" onerror="this.remove()"><figcaption><b>Telomoyo</b></figcaption></figure>
+        <figure class="foto t2" data-k="pendakian"><img loading="lazy" src="foto/prau1.jpg" alt="Gunung Prau" onerror="this.remove()"><figcaption><b>Gunung Prau</b></figcaption></figure>
+        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/prau2.jpg" alt="Gunung Prau" onerror="this.remove()"><figcaption><b>Gunung Prau</b></figcaption></figure>
+        <figure class="foto t2" data-k="pendakian"><img loading="lazy" src="foto/kembang1.jpg" alt="Gunung Kembang" onerror="this.remove()"><figcaption><b>Gunung Kembang</b></figcaption></figure>
+        <figure class="foto t1" data-k="touring"><img loading="lazy" src="foto/telagamenjer2.jpg" alt="Telaga Menjer" onerror="this.remove()"><figcaption><b>Telaga Menjer</b></figcaption></figure>
+        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/lawu1.jpg" alt="Gunung Lawu" onerror="this.remove()"><figcaption><b>Gunung Lawu</b></figcaption></figure>
+        <figure class="foto t2" data-k="pendakian"><img loading="lazy" src="foto/lawu2.jpg" alt="Gunung Lawu" onerror="this.remove()"><figcaption><b>Gunung Lawu</b></figcaption></figure>
+        <figure class="foto t1" data-k="pendakian"><img loading="lazy" src="foto/merbabu1.jpg" alt="Gunung Merbabu" onerror="this.remove()"><figcaption><b>Gunung Merbabu</b></figcaption></figure>
+        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/merbabu2.jpg" alt="Gunung Merbabu" onerror="this.remove()"><figcaption><b>Gunung Merbabu</b></figcaption></figure>
+        <figure class="foto t2" data-k="pendakian"><img loading="lazy" src="foto/muria1.jpg" alt="Gunung Muria" onerror="this.remove()"><figcaption><b>Gunung Muria</b></figcaption></figure>
+        <figure class="foto t1" data-k="pendakian"><img loading="lazy" src="foto/muria2.jpg" alt="Gunung Muria" onerror="this.remove()"><figcaption><b>Gunung Muria</b></figcaption></figure>
+        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/muria3.jpg" alt="Gunung Muria" onerror="this.remove()"><figcaption><b>Gunung Muria</b></figcaption></figure>
+        <figure class="foto t2" data-k="pendakian"><img loading="lazy" src="foto/muria4.jpg" alt="Gunung Muria" onerror="this.remove()"><figcaption><b>Gunung Muria</b></figcaption></figure>
+        <figure class="foto t2" data-k="pendakian"><img loading="lazy" src="foto/ungaran.jpg" alt="Gunung Ungaran" onerror="this.remove()"><figcaption><b>Gunung Ungaran</b></figcaption></figure>
+        <figure class="foto t3" data-k="pendakian"><img loading="lazy" src="foto/ungaran2.jpg" alt="Gunung Ungaran" onerror="this.remove()"><figcaption><b>Gunung Ungaran</b></figcaption></figure>
+      </div>
+      <p class="catatan-akhir">Ada beberapa gunung yang selalu ingin saya datangi lagi, bukan karena belum puas, tetapi karena setiap perjalanan meninggalkan cerita yang berbeda.</p>
     </section>
 
-    <section id="pendakian">
-      <h2>Pendakian</h2>
-      <p>Setiap puncak punya pelajaran. Ini beberapa catatan perjalanan saya.</p>
+    <section id="pendidikan">
+      <h2>Pendidikan</h2>
       <div class="timeline">
-        <div class="item">
-          <span class="tahun">2025</span>
-          <h3>NAMA GUNUNG TERBARU</h3>
-          <p>0.000 mdpl · Tulis momen paling berkesan, misalnya sunrise pertama atau teman seperjalanan.</p>
-        </div>
-        <div class="item">
-          <span class="tahun">2024</span>
-          <h3>NAMA GUNUNG KEDUA</h3>
-          <p>0.000 mdpl · Tulis satu pelajaran yang kamu dapat dari pendakian ini.</p>
-        </div>
+        <div class="item utama"><span class="tahun">2024 - 2027</span><h3>SMK Salafiyah</h3><p>Kajen, Margoyoso, Pati. Teknik Jaringan Komputer dan Telekomunikasi (TJKT).</p></div>
+        <div class="item"><span class="tahun">2021 - 2024</span><h3>MTs Darussalam</h3><p>Jetak, Wedung, Demak.</p></div>
+        <div class="item"><span class="tahun">2015 - 2021</span><h3>MI Darussalam</h3><p>Jetak, Wedung, Demak.</p></div>
       </div>
     </section>
 
-    <section id="proyek">
-      <h2>Proyek</h2>
-      <p>Hal-hal yang saya bangun untuk belajar dan untuk dipakai.</p>
+    <section id="project">
+      <h2>Project</h2>
+      <p class="intro">Project yang saya kerjakan sebagai bagian dari proses belajar dan pengembangan kemampuan.</p>
       <div class="grid">
-        <article class="kartu proyek">
-          <div class="thumb">💻</div>
-          <h3>Website Portofolio</h3>
-          <p>Portofolio responsif dengan mode gelap dan terang. Dibuat dari nol hanya dengan HP.</p>
-          <div class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        <article class="proyek">
+          <div class="thumb"><span>Foto project</span><img src="foto/mikrotik.jpg" alt="MikroTik Parent Panel" onerror="this.remove()"></div>
+          <div class="isi">
+            <h3>MikroTik Parent Panel</h3>
+            <p class="jenis">Networking</p>
+            <p>Panel kontrol internet anak berbasis Web &amp; MikroTik, untuk membantu mengatur penggunaan internet berdasarkan perangkat dan pengguna.</p>
+            <div class="tag"><span>PHP</span><span>MySQL</span><span>RouterOS API</span></div>
+            <button class="lihat" data-dialog="d-mikrotik">Lihat project →</button>
+          </div>
         </article>
-        <article class="kartu proyek">
-          <div class="thumb">🔧</div>
-          <h3>Rakit dan Servis PC</h3>
-          <p>Memilih komponen, merakit, menginstal, dan mencari penyebab masalah sampai perangkat kembali normal.</p>
-          <div class="chips"><span>Hardware</span><span>Troubleshooting</span></div>
-        </article>
-        <article class="kartu proyek">
-          <div class="thumb">🗄️</div>
-          <h3>Web dengan PHP dan MySQL</h3>
-          <p>Latihan membuat web dinamis berbasis database memakai XAMPP dan phpMyAdmin.</p>
-          <div class="chips"><span>PHP</span><span>MySQL</span><span>XAMPP</span></div>
+        <article class="proyek">
+          <div class="thumb"><span>Foto project</span><img src="foto/smarthome.jpg" alt="Smart Home" onerror="this.remove()"></div>
+          <div class="isi">
+            <h3>Smart Home</h3>
+            <p class="jenis">Hardware / IoT</p>
+            <p>Prototype sistem Smart Home yang saya kerjakan sebagai bagian dari proses belajar teknologi dan otomatisasi.</p>
+            <span class="status">Prototype</span>
+          </div>
         </article>
       </div>
+      <p class="penutup-project">Dua project ini menjadi bagian dari proses saya untuk belajar, mencoba, dan memahami teknologi melalui praktik langsung.</p>
     </section>
 
     <section id="skill">
       <h2>Skill</h2>
-      <div class="grid">
-        <div class="kartu">
-          <h3>💻 Software</h3>
-          <div class="chips">
-            <span>HTML</span><span>CSS</span><span>JavaScript</span>
-            <span>PHP</span><span>MySQL</span><span>VS Code</span>
-          </div>
-        </div>
-        <div class="kartu">
-          <h3>🔧 Hardware</h3>
-          <div class="chips">
-            <span>Rakit PC</span><span>Servis</span><span>Elektronika dasar</span>
-          </div>
-        </div>
-        <div class="kartu">
-          <h3>🌱 Sikap</h3>
-          <div class="chips">
-            <span>Cepat belajar</span><span>Sabar</span><span>Teliti</span>
-          </div>
-        </div>
+      <p class="intro">Saya masih belajar. Ini bidang yang sedang saya tekuni.</p>
+      <div class="skill">
+        <div class="baris"><h3>Networking</h3><div class="tag"><span>MikroTik</span><span>TCP/IP</span><span>DHCP</span><span>IP Addressing</span></div></div>
+        <div class="baris"><h3>Hardware</h3><div class="tag"><span>Perakitan PC</span><span>Troubleshooting</span><span>Maintenance</span></div></div>
+        <div class="baris"><h3>Web Development</h3><div class="tag"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span></div></div>
+        <div class="baris"><h3>Tools</h3><div class="tag"><span>VS Code</span><span>XAMPP</span><span>phpMyAdmin</span></div></div>
       </div>
     </section>
 
     <section id="kontak">
-      <h2>Kontak</h2>
-      <p>Punya ide, proyek, atau ajakan naik gunung? Saya senang ngobrol.</p>
-      <div class="tombol kiri">
-        <a href="https://instagram.com/fachrixzyy" class="btn utama">Instagram @fachrixzyy</a>
+      <h2>Mari Terhubung</h2>
+      <p class="intro">Punya pertanyaan, ingin berdiskusi tentang project, atau sekadar ingin menyapa? Jangan ragu untuk menghubungi saya.</p>
+      <div class="kontak-baris">
+        <a href="https://instagram.com/fachrixzyy" class="btn utama">Instagram</a>
+        <a href="https://tiktok.com/@fachrixzyy" class="btn">TikTok</a>
+        <a href="https://github.com/fachrixzyy" class="btn">GitHub</a>
+        <a href="mailto:fachrihbr@gmail.com" class="btn">Email</a>
       </div>
     </section>
   </main>
 
+  <div class="penutup">
+    <p>“Saya mungkin masih dalam proses belajar, tetapi saya akan terus mencoba, terus berjalan, dan terus membuat sesuatu yang berarti.”</p>
+  </div>
+
   <footer>
-    <p>&copy; 2026 Ahmad Fachri Habibur Rohman</p>
-    <p class="kecil">Dibuat dari HP, dengan sabar.</p>
+    <p>Ahmad Fachri Habibur Rohman &copy; 2026</p>
+    <p class="kecil">Built with curiosity &amp; consistency.</p>
   </footer>
 
-  <div id="lightbox"><img id="lightbox-img" alt=""></div>
+  <!-- DETAIL PROJECT -->
+  <dialog class="detail" id="d-mikrotik">
+    <button class="tutup" aria-label="Tutup">✕</button>
+    <h3>MikroTik Parent Panel</h3>
+    <p class="jenis">Panel Kontrol Internet Anak Berbasis Web &amp; MikroTik</p>
+    <div class="thumb besar"><span>Foto project</span><img src="foto/mikrotik.jpg" alt="" onerror="this.remove()"></div>
+    <dl>
+      <dt>Tentang project</dt>
+      <dd>Dibuat untuk menyederhanakan pengelolaan akses internet yang biasanya dilakukan lewat konfigurasi MikroTik secara langsung. Panel berfungsi sebagai pengendali konfigurasi, sementara trafik internet tetap melewati MikroTik.</dd>
+      <dt>Masalah</dt>
+      <dd>Pengelolaan internet pada jaringan bersama sering dilakukan manual dan sulit dibedakan berdasarkan pengguna. Pembatasan secara global juga bisa memengaruhi pengguna lain.</dd>
+      <dt>Solusi</dt>
+      <dd>Panel berbasis web yang menghubungkan kebutuhan pengguna dengan konfigurasi MikroTik, sehingga aturan diterapkan berdasarkan perangkat yang sudah didaftarkan.</dd>
+      <dt>Mekanisme</dt>
+      <dd><div class="alur"><span>Perangkat</span><span>Web Panel</span><span>PHP + MySQL</span><span>RouterOS API</span><span>MikroTik</span></div></dd>
+      <dt>Fitur</dt>
+      <dd><ul class="fitur">
+        <li><b>Perangkat Terhubung:</b> membaca DHCP Lease dan membantu mendaftarkan perangkat.</li>
+        <li><b>Batas Internet:</b> mengatur upload dan download per anak dengan Simple Queue.</li>
+        <li><b>Filtering Internet:</b> mengatur kategori atau domain yang boleh atau diblokir, termasuk jadwal.</li>
+        <li><b>Mode Belajar:</b> memutus akses internet perangkat anak, manual maupun terjadwal.</li>
+        <li><b>Audit &amp; Sinkronisasi:</b> mencatat aktivitas dan memeriksa kondisi konfigurasi.</li>
+      </ul></dd>
+      <dt>Teknologi</dt>
+      <dd>PHP · MySQL · RouterOS API · MikroTik · XAMPP</dd>
+      <dt>Hasil</dt>
+      <dd>Panel dapat dipakai sebagai antarmuka untuk mengelola aturan jaringan yang diterapkan ke MikroTik, sehingga pengaturan yang teknis bisa disajikan dengan lebih sederhana.</dd>
+    </dl>
+  </dialog>
+
+  <!-- LIGHTBOX FOTO -->
+  <div id="lb" class="lb" hidden>
+    <button class="lb-tutup" aria-label="Tutup">✕</button>
+    <button class="lb-nav lb-prev" aria-label="Sebelumnya">‹</button>
+    <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+    <button class="lb-nav lb-next" aria-label="Berikutnya">›</button>
+  </div>
+
+  <button id="atas" aria-label="Kembali ke atas">↑</button>
   <script src="script.js"></script>
 </body>
 </html>
