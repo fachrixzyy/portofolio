@@ -249,19 +249,15 @@ section p + p { margin-top: 12px; }
 .lb-next { right: 14px; }
 @media (hover: hover) and (pointer: fine) { .lb-prev, .lb-next { display: block; } }
 
-/* ===== TIMELINE PENDIDIKAN ===== */
-.timeline { margin: 24px 0 0 6px; padding-left: 24px; border-left: 2px solid var(--garis); }
-.item { position: relative; padding-bottom: 26px; }
-.item:last-child { padding-bottom: 0; }
-.item::before {
-  content: ""; position: absolute; left: -32px; top: 7px; width: 14px; height: 14px;
-  background: var(--garis); border: 3px solid var(--bg); border-radius: 50%;
-}
-.item.utama::before { background: var(--aksen); }
-.tahun { font-size: 0.82rem; font-weight: 600; color: var(--aksen); }
-.item h3 { margin: 2px 0; font-size: 1.05rem; }
-.item.utama h3 { font-size: 1.2rem; }
-.item p { color: var(--redup); font-size: 0.93rem; }
+/* ===== EDUCATION (daftar sederhana) ===== */
+#pendidikan { padding: 48px 0; }
+.edu { list-style: none; margin-top: 16px; }
+.edu li { display: grid; grid-template-columns: 112px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--garis); }
+.edu li:last-child { border-bottom: 0; }
+.edu .tahun { font-size: 0.85rem; color: var(--redup); }
+.edu b { display: block; font-weight: 500; }
+.edu .utama b { font-weight: 600; }
+.edu div > span { display: block; color: var(--redup); font-size: 0.9rem; }
 
 /* ===== PROJECT ===== */
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 22px; }
@@ -371,9 +367,9 @@ section p + p { margin-top: 12px; }
 /* ===== KONTAK, PENUTUP, FOOTER ===== */
 .kontak-baris { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .penutup { max-width: 600px; margin: 0 auto; padding: 56px 20px; text-align: center; border-top: 1px solid var(--garis); }
-.penutup p { font-family: Poppins, sans-serif; font-size: 1.05rem; line-height: 1.7; color: var(--redup); font-style: italic; }
+.penutup p { font-family: Poppins, sans-serif; font-size: 0.98rem; line-height: 1.7; color: var(--redup); font-style: italic; }
 footer { text-align: center; padding: 30px 20px; color: var(--redup); border-top: 1px solid var(--garis); font-size: 0.88rem; }
-footer .kecil { font-size: 0.78rem; margin-top: 4px; opacity: 0.8; }
+footer .kecil { max-width: 420px; margin: 6px auto 0; font-size: 0.8rem; line-height: 1.6; opacity: 0.8; }
 #atas {
   position: fixed; right: 18px; bottom: 18px; width: 42px; height: 42px;
   border-radius: 50%; border: 0; cursor: pointer;
