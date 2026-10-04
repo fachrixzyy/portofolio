@@ -151,25 +151,40 @@
         <p class="no-cerita"></p>
         <p class="label-cerita">Pendakian · 2025 · 3.265 mdpl</p>
         <h3>Gunung Lawu</h3>
-        <figure class="foto-besar"><img loading="lazy" src="foto/lawu1.jpg" alt="Gunung Lawu" onerror="this.remove()"><span class="jumlah">2 foto</span></figure>
+        <div class="slider foto-besar">
+          <div class="jalur"><img loading="lazy" src="foto/lawu1.jpg" alt="Gunung Lawu 1" onerror="this.remove()"><img loading="lazy" src="foto/lawu2.jpg" alt="Gunung Lawu 2" onerror="this.remove()"></div>
+          <span class="hitung" hidden></span>
+          <button class="s-nav s-prev" type="button" aria-label="Foto sebelumnya" hidden>‹</button>
+          <button class="s-nav s-next" type="button" aria-label="Foto berikutnya" hidden>›</button>
+          <div class="titik" hidden></div>
+        </div>
         <blockquote>“Di tempat ini, usia saya bertambah bersama langkah yang panjang. Bukan hanya bertambah umur, tetapi juga belajar bahwa hidup bukan tentang seberapa cepat sampai, melainkan tentang apa yang kita temukan di sepanjang jalan.”</blockquote>
-        <button class="lihat-foto" type="button">Lihat 2 foto →</button>
       </article>
       <article class="cerita" data-k="pendakian" data-judul="Gunung Merbabu" data-meta="Pendakian · 2025" data-foto="merbabu2.jpg,merbabu1.jpg">
         <p class="no-cerita"></p>
         <p class="label-cerita">Pendakian · 2025</p>
         <h3>Gunung Merbabu</h3>
-        <figure class="foto-besar"><img loading="lazy" src="foto/merbabu2.jpg" alt="Gunung Merbabu" onerror="this.remove()"><span class="jumlah">2 foto</span></figure>
+        <div class="slider foto-besar">
+          <div class="jalur"><img loading="lazy" src="foto/merbabu2.jpg" alt="Gunung Merbabu 1" onerror="this.remove()"><img loading="lazy" src="foto/merbabu1.jpg" alt="Gunung Merbabu 2" onerror="this.remove()"></div>
+          <span class="hitung" hidden></span>
+          <button class="s-nav s-prev" type="button" aria-label="Foto sebelumnya" hidden>‹</button>
+          <button class="s-nav s-next" type="button" aria-label="Foto berikutnya" hidden>›</button>
+          <div class="titik" hidden></div>
+        </div>
         <blockquote>“Langkah kecil mungkin terasa tidak berarti hari ini, tetapi ketika menoleh ke belakang, ternyata kita sudah berjalan sejauh itu.”</blockquote>
-        <button class="lihat-foto" type="button">Lihat 2 foto →</button>
       </article>
       <article class="cerita" data-k="pendakian" data-judul="Gunung Prau" data-meta="Pendakian · 2025 · 2.590 mdpl" data-foto="prau1.jpg,prau2.jpg">
         <p class="no-cerita"></p>
         <p class="label-cerita">Pendakian · 2025 · 2.590 mdpl</p>
         <h3>Gunung Prau</h3>
-        <figure class="foto-besar"><img loading="lazy" src="foto/prau1.jpg" alt="Gunung Prau" onerror="this.remove()"><span class="jumlah">2 foto</span></figure>
+        <div class="slider foto-besar">
+          <div class="jalur"><img loading="lazy" src="foto/prau1.jpg" alt="Gunung Prau 1" onerror="this.remove()"><img loading="lazy" src="foto/prau2.jpg" alt="Gunung Prau 2" onerror="this.remove()"></div>
+          <span class="hitung" hidden></span>
+          <button class="s-nav s-prev" type="button" aria-label="Foto sebelumnya" hidden>‹</button>
+          <button class="s-nav s-next" type="button" aria-label="Foto berikutnya" hidden>›</button>
+          <div class="titik" hidden></div>
+        </div>
         <blockquote>“Ada perjalanan yang melelahkan tubuh, tetapi justru meninggalkan sesuatu yang membuat hati ingin mengingatnya kembali.”</blockquote>
-        <button class="lihat-foto" type="button">Lihat 2 foto →</button>
       </article>
       <article class="cerita" data-k="touring" data-judul="Dieng" data-meta="Touring · 2025" data-foto="dieng.jpg">
         <p class="no-cerita"></p>
@@ -182,9 +197,14 @@
         <p class="no-cerita"></p>
         <p class="label-cerita">Touring · 2025</p>
         <h3>Jogja</h3>
-        <figure class="foto-besar"><img loading="lazy" src="foto/jogja1.jpg" alt="Jogja" onerror="this.remove()"><span class="jumlah">2 foto</span></figure>
+        <div class="slider foto-besar">
+          <div class="jalur"><img loading="lazy" src="foto/jogja1.jpg" alt="Jogja 1" onerror="this.remove()"><img loading="lazy" src="foto/jogja2.jpg" alt="Jogja 2" onerror="this.remove()"></div>
+          <span class="hitung" hidden></span>
+          <button class="s-nav s-prev" type="button" aria-label="Foto sebelumnya" hidden>‹</button>
+          <button class="s-nav s-next" type="button" aria-label="Foto berikutnya" hidden>›</button>
+          <div class="titik" hidden></div>
+        </div>
         <blockquote>“Perjalanan sederhana pun bisa menjadi berarti, ketika kita benar-benar hadir di dalamnya, bukan sekadar melewatinya.”</blockquote>
-        <button class="lihat-foto" type="button">Lihat 2 foto →</button>
       </article>
 
       <button class="semua-btn" id="semua" type="button">Perjalanan lainnya ↓</button>
@@ -322,9 +342,13 @@
   <div id="lb" class="lb" hidden>
     <button class="lb-tutup" aria-label="Tutup">✕</button>
     <span class="lb-hitung" id="lb-hitung" hidden></span>
-    <button class="lb-nav lb-prev" aria-label="Sebelumnya">‹</button>
-    <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption><div class="lb-thumbs" id="lb-thumbs" hidden></div></figure>
-    <button class="lb-nav lb-next" aria-label="Berikutnya">›</button>
+    <div class="lb-jalur" id="lb-jalur"></div>
+    <div class="lb-bawah">
+      <div id="lb-cap"></div>
+      <div class="titik" id="lb-titik" hidden></div>
+    </div>
+    <button class="lb-nav lb-prev" aria-label="Sebelumnya" hidden>‹</button>
+    <button class="lb-nav lb-next" aria-label="Berikutnya" hidden>›</button>
   </div>
 
   <button id="atas" aria-label="Kembali ke atas">↑</button>
