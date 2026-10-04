@@ -1,6 +1,75 @@
 const root = document.documentElement;
 const tombolTema = document.getElementById("tema");
 
+// 0. Loader, animasi masuk hero, dan elemen muncul saat scroll
+const kurangi = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// foto: pudar masuk setelah selesai dimuat
+function pudar(im) {
+  if (im.complete) return;
+  im.classList.add("memuat");
+  const ok = () => im.classList.remove("memuat");
+  im.addEventListener("load", ok, { once: true });
+  im.addEventListener("error", ok, { once: true });
+}
+document.querySelectorAll("img").forEach(pudar);
+
+// elemen yang muncul bergantian saat di-scroll (disiapkan sekarang, diamati setelah loader)
+const sasaran = [...document.querySelectorAll(
+  "main > .stats, section h2, section .intro, .ringkas, .filter, #tentang p, .proyek, .penutup-project, " +
+  ".baris, .belajar, .cerita, #semua, .kembali, .edu li, .kontak-baris, .penutup p"
+)];
+const perInduk = new Map();
+const bisaReveal = "IntersectionObserver" in window && !kurangi;
+if (bisaReveal) {
+  sasaran.forEach(el => {
+    const n = perInduk.get(el.parentElement) || 0;
+    perInduk.set(el.parentElement, n + 1);
+    el.style.setProperty("--d", Math.min(n, 3) * 0.08 + "s");
+    el.classList.add("reveal");
+  });
+}
+function aktifkanReveal() {
+  if (!bisaReveal) return;
+  const pengamat = new IntersectionObserver(hasil => {
+    hasil.forEach(item => {
+      if (!item.isIntersecting) return;
+      const el = item.target;
+      el.classList.add("show");
+      pengamat.unobserve(el);
+      // setelah selesai, lepas kelasnya agar efek hover bawaan kartu normal lagi
+      setTimeout(() => { el.classList.remove("reveal", "show"); el.style.removeProperty("--d"); }, 1200);
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
+  sasaran.forEach(el => pengamat.observe(el));
+}
+
+function mulai() {
+  root.classList.remove("muat");
+  root.classList.add("siap");
+  try { sessionStorage.setItem("loader", "1"); } catch (e) {}
+  aktifkanReveal();
+}
+const loader = document.getElementById("loader");
+if (root.classList.contains("muat") && loader) {
+  const awal = performance.now();
+  const MIN = kurangi ? 0 : 600;   // tampil minimal, supaya tidak berkedip
+  const MAX = 3000;                // paling lama, kalau sinyal lambat
+  let beres = false;
+  const tutupLoader = () => {
+    if (beres) return;
+    beres = true;
+    loader.classList.add("selesai");
+    setTimeout(mulai, kurangi ? 0 : 320);
+  };
+  const halamanSiap = () => setTimeout(tutupLoader, Math.max(MIN - (performance.now() - awal), 0));
+  if (document.readyState === "complete") halamanSiap();
+  else window.addEventListener("load", halamanSiap);
+  setTimeout(tutupLoader, MAX);
+} else {
+  mulai();
+}
+
 // 1. Ganti tema (pilihan diingat di browser)
 function aturTema(gelap) {
   root.dataset.theme = gelap ? "dark" : "light";
@@ -98,6 +167,7 @@ function bukaFoto(daftar, idx, jdl, mt) {
   posisi = idx;
   lbJalur.innerHTML = daftar.map(f => '<div class="lb-slide"><img src="foto/' + f + '" alt=""></div>').join("");
   lbTitik.innerHTML = "<i></i>".repeat(daftar.length);
+  lbJalur.querySelectorAll("img").forEach(pudar);
   lbCap.innerHTML = "<b>" + jdl + "</b>" + mt;
   lb.hidden = false;
   kunci(true);
@@ -108,15 +178,22 @@ function buka(kartu) {
   bukaFoto(kartu.dataset.foto.split(","), 0, kartu.dataset.judul, kartu.dataset.meta || kartu.querySelector(".info p").textContent);
 }
 function tutup() {
-  lb.hidden = true;
-  if (kembali) {
-    const d = kembali;
-    kembali = null;
-    d.showModal();
-  } else {
-    kunci(false);
-  }
-  if (sinkron) { sinkron(posisi); sinkron = null; }
+  if (lb.hidden || lb.classList.contains("keluar")) return;
+  const beres = () => {
+    lb.hidden = true;
+    lb.classList.remove("keluar");
+    if (kembali) {
+      const d = kembali;
+      kembali = null;
+      d.showModal();
+    } else {
+      kunci(false);
+    }
+    if (sinkron) { sinkron(posisi); sinkron = null; }
+  };
+  if (kurangi) { beres(); return; }
+  lb.classList.add("keluar");
+  setTimeout(beres, 200);
 }
 function geser(arah) {
   lbJalur.scrollBy({ left: arah * lbJalur.clientWidth, behavior: "smooth" });
@@ -204,9 +281,16 @@ document.querySelectorAll(".lihat").forEach(tombol => {
     if (sl) sl.perbarui();
   });
 });
+function tutupDialog(d) {
+  if (!d.open || d.classList.contains("keluar")) return;
+  if (kurangi) { d.close(); return; }
+  d.classList.add("keluar");
+  setTimeout(() => { d.classList.remove("keluar"); d.close(); }, 200);
+}
 document.querySelectorAll("dialog.detail").forEach(d => {
-  d.querySelector(".tutup").addEventListener("click", () => d.close());
-  d.addEventListener("click", e => { if (e.target === d) d.close(); });
+  d.querySelector(".tutup").addEventListener("click", () => tutupDialog(d));
+  d.addEventListener("click", e => { if (e.target === d) tutupDialog(d); });
+  d.addEventListener("cancel", e => { e.preventDefault(); tutupDialog(d); });
   d.addEventListener("close", () => { if (lb.hidden) kunci(false); });
 });
 
@@ -229,15 +313,3 @@ window.addEventListener("scroll", () => {
   });
 });
 atas.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-
-// 7. Bagian muncul halus saat di-scroll
-bagian.forEach(el => el.classList.add("reveal"));
-const pengamat = new IntersectionObserver(hasil => {
-  hasil.forEach(item => {
-    if (item.isIntersecting) {
-      item.target.classList.add("show");
-      pengamat.unobserve(item.target);
-    }
-  });
-}, { threshold: 0.08 });
-bagian.forEach(el => pengamat.observe(el));
