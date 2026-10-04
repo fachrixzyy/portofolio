@@ -77,6 +77,34 @@
       <p>Di luar teknologi, saya juga menikmati perjalanan, touring, dan mendaki gunung. Bagi saya, perjalanan bukan sekadar tempat untuk pergi, tetapi bagian dari proses untuk terus berkembang.</p>
     </section>
 
+    <section id="project">
+      <h2>Project</h2>
+      <p class="intro">Project yang saya kerjakan sebagai bagian dari proses belajar dan pengembangan kemampuan.</p>
+      <div class="grid">
+        <article class="proyek">
+          <div class="thumb"><span>Foto project</span><img src="foto/mikrotik.jpg" alt="MikroTik Parent Panel" onerror="this.remove()"><em class="nomor">#01</em></div>
+          <div class="isi">
+            <h3>MikroTik Parent Panel</h3>
+            <p class="jenis">Networking</p>
+            <p>Panel kontrol internet anak berbasis Web &amp; MikroTik, untuk membantu mengatur penggunaan internet berdasarkan perangkat dan pengguna.</p>
+            <div class="tag"><span>PHP</span><span>MySQL</span><span>RouterOS API</span></div>
+            <button class="lihat" data-dialog="d-mikrotik">View Project →</button>
+          </div>
+        </article>
+        <article class="proyek">
+          <div class="thumb"><span>Foto project</span><img src="foto/smarthome1.jpg" alt="Smart Home" onerror="this.remove()"><em class="nomor">#02</em></div>
+          <div class="isi">
+            <h3>Smart Home</h3>
+            <p class="jenis">Hardware / IoT</p>
+            <p>Prototype Smart Home berbasis ESP8266 yang menggabungkan pemrograman dan perangkat keras untuk mengontrol LED, kipas DC, dan servo motor.</p>
+            <div class="tag"><span>ESP8266</span><span>IoT</span><span>Automation</span></div>
+            <button class="lihat" data-dialog="d-smarthome">View Project →</button>
+          </div>
+        </article>
+      </div>
+      <p class="penutup-project">Dua project ini menjadi bagian dari proses saya untuk belajar, mencoba, dan memahami teknologi melalui praktik langsung.</p>
+    </section>
+
     <section id="perjalanan">
       <h2>Perjalanan</h2>
       <p class="intro">Beberapa perjalanan yang menjadi bagian dari cerita saya.</p>
@@ -152,32 +180,7 @@
       </div>
     </section>
 
-    <section id="project">
-      <h2>Project</h2>
-      <p class="intro">Project yang saya kerjakan sebagai bagian dari proses belajar dan pengembangan kemampuan.</p>
-      <div class="grid">
-        <article class="proyek">
-          <div class="thumb"><span>Foto project</span><img src="foto/mikrotik.jpg" alt="MikroTik Parent Panel" onerror="this.remove()"></div>
-          <div class="isi">
-            <h3>MikroTik Parent Panel</h3>
-            <p class="jenis">Networking</p>
-            <p>Panel kontrol internet anak berbasis Web &amp; MikroTik, untuk membantu mengatur penggunaan internet berdasarkan perangkat dan pengguna.</p>
-            <div class="tag"><span>PHP</span><span>MySQL</span><span>RouterOS API</span></div>
-            <button class="lihat" data-dialog="d-mikrotik">Lihat project →</button>
-          </div>
-        </article>
-        <article class="proyek">
-          <div class="thumb"><span>Foto project</span><img src="foto/smarthome.jpg" alt="Smart Home" onerror="this.remove()"></div>
-          <div class="isi">
-            <h3>Smart Home</h3>
-            <p class="jenis">Hardware / IoT</p>
-            <p>Prototype sistem Smart Home yang saya kerjakan sebagai bagian dari proses belajar teknologi dan otomatisasi.</p>
-            <span class="status">Prototype</span>
-          </div>
-        </article>
-      </div>
-      <p class="penutup-project">Dua project ini menjadi bagian dari proses saya untuk belajar, mencoba, dan memahami teknologi melalui praktik langsung.</p>
-    </section>
+    
 
     <section id="skill">
       <h2>Skill</h2>
@@ -238,6 +241,31 @@
       <dd>PHP · MySQL · RouterOS API · MikroTik · XAMPP</dd>
       <dt>Hasil</dt>
       <dd>Panel dapat dipakai sebagai antarmuka untuk mengelola aturan jaringan yang diterapkan ke MikroTik, sehingga pengaturan yang teknis bisa disajikan dengan lebih sederhana.</dd>
+    </dl>
+  </dialog>
+
+  <dialog class="detail" id="d-smarthome">
+    <button class="tutup" aria-label="Tutup">✕</button>
+    <h3>Smart Home</h3>
+    <p class="jenis">Prototype Smart Home berbasis ESP8266</p>
+    <div class="galeri-mini">
+      <img src="foto/smarthome1.jpg" alt="Smart Home 1" loading="lazy" onerror="this.remove()">
+      <img src="foto/smarthome2.jpg" alt="Smart Home 2" loading="lazy" onerror="this.remove()">
+      <img src="foto/smarthome3.jpg" alt="Smart Home 3" loading="lazy" onerror="this.remove()">
+    </div>
+    <dl>
+      <dt>Tentang project</dt>
+      <dd>Prototype Smart Home yang menggabungkan pemrograman dan perangkat keras untuk mengontrol LED, kipas DC, dan servo motor.</dd>
+      <dt>Fitur</dt>
+      <dd><ul class="fitur">
+        <li><b>LED:</b> dikontrol melalui ESP8266.</li>
+        <li><b>Kipas DC:</b> dikontrol melalui ESP8266.</li>
+        <li><b>Servo motor:</b> dikontrol melalui ESP8266.</li>
+      </ul></dd>
+      <dt>Teknologi</dt>
+      <dd>ESP8266 · IoT · Automation</dd>
+      <dt>Peran saya</dt>
+      <dd>Coding, perakitan, dan pengujian bersama tim.</dd>
     </dl>
   </dialog>
 
