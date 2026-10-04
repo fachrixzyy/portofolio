@@ -124,6 +124,17 @@ h2 { font-size: clamp(1.5rem, 5vw, 1.9rem); font-weight: 600; margin-bottom: 12p
 .intro { color: var(--redup); max-width: 600px; }
 section p + p { margin-top: 12px; }
 
+/* ===== QUICK STATS & ABOUT ===== */
+.stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 8px; overflow: hidden;
+  background: var(--kartu); border: 1px solid var(--garis); border-radius: 16px; box-shadow: var(--bayang);
+}
+.stats div { padding: 18px 8px; text-align: center; }
+.stats div + div { border-left: 1px solid var(--garis); }
+.stats b { display: block; font: 600 1.8rem/1.2 Poppins, sans-serif; color: var(--teks); }
+.stats span { font-size: 0.8rem; color: var(--redup); }
+#tentang p { max-width: 62ch; }
+
 /* ===== PERJALANAN ===== */
 .ringkas { margin-top: 6px; color: var(--aksen); font-weight: 600; font-size: 0.88rem; }
 .filter { display: flex; gap: 8px; margin: 20px 0 18px; flex-wrap: wrap; }
